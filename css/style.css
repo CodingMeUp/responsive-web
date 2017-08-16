@@ -9,7 +9,7 @@ Copyright © All rights Reserved
 Surjith S M / @surjithctly
 
 
-TABLE OF CONTENTS 
+TABLE OF CONTENTS
 ---------------------------------------------------
 
     • Global Styles
@@ -25,10 +25,10 @@ TABLE OF CONTENTS
     • Leaders (Team)
     • Vision
     • Sidebar
-    • Career Page 
+    • Career Page
     • Job stats
-    • service page 
-    • back to top 
+    • service page
+    • back to top
     • Image Hover Effects
     • Skillbar
     • 404 page
@@ -40,7 +40,44 @@ TABLE OF CONTENTS
 
 /* --------------- Global Styles --------------- */
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Condensed:400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Condensed:400,700);*/
+/*@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v16/Hgo13k-tfSpn0qi1SFdUfaCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v16/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v16/RxZJdnzeo3R5zSexge8UUaCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v16/d-6IYplOFocCacKzxwXSOKCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v14/Zd2E9abXLFGSr9G3YK2MsDR-eWpsHSw83BRsAQElGgc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v14/b9QBgL0iMZfDSpmcXcE8nDokq8qT6AIiNJ07Vf_NrVA.ttf) format('truetype');
+}*/
+
 body {
     color: #8d8d8d;
     font-family: 'Roboto', sans-serif;
@@ -863,7 +900,7 @@ h2.color-title {
     font-size: 16px;
     font-weight: bold;
     color: #FFF;
-    background: #ffda44;
+    background: #E8C329;
     margin: 0;
     padding: 0 15px;
     line-height: 28px;

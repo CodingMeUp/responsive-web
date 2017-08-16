@@ -1,59 +1,33 @@
-// When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
-
-function init() {
-    // Basic options for a simple Google Map
-    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
-
-    var mapElement = document.getElementById('google-map');
-
-    var map_lat = mapElement.getAttribute('data-latitude');
-    var map_lon = mapElement.getAttribute('data-longitude');
-    var map_title = mapElement.getAttribute('data-map-title');
-    var map_zoom = mapElement.getAttribute('data-map-zoom');
-
-    var mapOptions = {
-
-        // How zoomed in you want the map to start at (always required)
-        zoom: parseInt(map_zoom),
-
-        // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(map_lat, map_lon),
-
-        // How you would like to style the map. 
-        // This is where you would paste any style found on Snazzy Maps.
-        styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }]
-    };
-
-    // Get the HTML DOM element that will contain your map 
-    // We are using a div with id="map" seen below in the <body>
-    var mapElement = document.getElementById('google-map');
-
-    // Create the Google Map using our element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-
-    // Let's also add a marker while we're at it
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(map_lat, map_lon),
-        map: map,
-        title: map_title
-    });
-
-    var map_locations = document.getElementById("map-address");
-  map_locations.addEventListener("click",function(e){
-   e.preventDefault()
-   var newlat = e.target.getAttribute('data-latitude');
-   var newlon = e.target.getAttribute('data-longitude');
-   var newtitle = e.target.getAttribute('data-map-title');
-   var newzoom = e.target.getAttribute('data-map-zoom');
-   
-   marker.setPosition( new google.maps.LatLng( newlat, newlon ) );
-   marker.setTitle(newtitle);
-   map.panTo( new google.maps.LatLng( newlat, newlon ) );
-   map.setZoom( parseInt(newzoom) );
-
-},false);
 
 
-}
- 
+                var map = new BMap.Map('allmap');
+                var poi = new BMap.Point(111.644885,22.791031);
+                map.centerAndZoom(poi, 20);
+                map.enableScrollWheelZoom(true);
+                var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+                                '<img src="images/gate.png" alt="" style="float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;"/>' +
+                                '地址：广东省云浮市罗定市双东街道龙凤村福兴新型墙体材料厂<br/>电话：0766-3912813<br/>' +
+                              '</div>';
+
+                //创建检索信息窗口对象
+                var searchInfoWindow = null;
+                searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+                  title  : "福兴新型墙体材料厂",      //标题
+                  width  : 300,             //宽度
+                  height : 105,              //高度
+                  panel  : "panel",         //检索结果面板
+                  enableAutoPan : true,     //自动平移
+                  enableSendToPhone: false, // 取消发送手机
+                  searchTypes   :[
+                    BMAPLIB_TAB_SEARCH,   //周边检索
+                    BMAPLIB_TAB_TO_HERE,  //到这里去
+                    BMAPLIB_TAB_FROM_HERE //从这里出发
+                  ]
+                });
+                var marker = new BMap.Marker(poi); //创建marker对象
+                marker.enableDragging(); //marker可拖拽
+                marker.addEventListener("click", function(e){
+                  searchInfoWindow.open(marker);
+                  document.getElementById('BMapLib_trans_text0').parentNode.style.width = '110px'   // 出发的样式错乱修正
+                })
+                map.addOverlay(marker); //在地图中添加marker
