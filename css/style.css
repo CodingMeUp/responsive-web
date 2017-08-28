@@ -181,7 +181,7 @@ blockquote {
     text-align: left;
     margin: 0;
     border: none;
-    font-style: italic;
+    /*font-style: italic;*/
     -webkit-transition: 0.5s ease all;
     -o-transition: 0.5s ease all;
     -moz-transition: 0.5s ease all;
@@ -593,7 +593,7 @@ li.dropdown i.fa.dropdown-toggle {
         right: 0;
         position: absolute;
         background: none;
-        top: 0px;
+        top: -17px;
         border: none;
         padding: 0 10px;
         margin: 21px 15px;
